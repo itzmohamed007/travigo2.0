@@ -49,33 +49,42 @@
         <!--images section-->
 		<div class="package-content">
 			<?php
-			foreach($data as $row) {
-				$image = $row['image'];
-				$destination = $row['destination'];
-				$price = $row['price'];
-	      $duration = $row['duration'];
-	      echo '
-					<div class="box">
-						<div class="thum">
-							<img alt="image de paris" src="' . $image . '">
-							<h3>$' . $price . '</h3>
-						</div>
-						<div class="dest-content">
-							<div class="location">
-								<h4>' . $destination . '</h4>
-								<p>' . $duration . ' h</p>
+			if($data != false) {
+				foreach($data as $row) {
+					$image = $row['image'];
+					$destination = $row['destination'];
+					$price = $row['price'];
+					  $duration = $row['duration'];
+					  echo '
+						<div class="box">
+							<div class="thum">
+								<img alt="image de paris" src="' . $image . '">
+								<h3>$' . $price . '</h3>
 							</div>
-							<div class="stars">
-								<a href="#"><i class="bx bxs-star"></i></a>
-								<a href="#"><i class="bx bxs-star"></i></a>
-								<a href="#"><i class="bx bxs-star"></i></a>
-								<a href="#"><i class="bx bxs-star"></i></a>
-								<a href="#"><i class="bx bxs-star"></i></a>
+							<div class="dest-content">
+								<div class="location">
+									<h4>' . $destination . '</h4>
+									<p>' . $duration . ' h</p>
+								</div>
+								<div class="stars">
+									<a href="#"><i class="bx bxs-star"></i></a>
+									<a href="#"><i class="bx bxs-star"></i></a>
+									<a href="#"><i class="bx bxs-star"></i></a>
+									<a href="#"><i class="bx bxs-star"></i></a>
+									<a href="#"><i class="bx bxs-star"></i></a>
+								</div>
 							</div>
 						</div>
-					</div>
-				';
-			}
+					';
+				}
+			} else {
+				echo '
+						<div class="collection">
+							<img src="../public/imgs/tours/Error.png" alt="nft image" width="100%" height ="300px">
+							<h3>no tours to show</h3>
+						</div>	
+					';
+				}
 			?>
 			<!-- backup yo -->
 		</div>

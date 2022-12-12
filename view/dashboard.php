@@ -45,23 +45,34 @@ if(!isset($_SESSION["email"])) {
 	<!-- content -->
 	<section class="display-table">
 		<?php
-			foreach($data as $row) {
-				$image = $row['image'];
-				$destination = $row['destination'];
-				$duration = $row['duration'];
-				$price = $row['price'];
-	    echo
-	    	'
-				<div class="collection">
-					<img src=' . $image . ' alt="nft image" width="100%" height ="300px">
-					<h3>destination: ' . $destination . '</h3>
-					<p>price: ' . $price .'$</p>
-					<p>duration: ' . $duration .'h</p>
-					<div class="operation-td">
-						<a name="update" class="update"><i class="bx bxs-edit"></i>Update</a>
-						<a class="delete"><i class="bx bxs-eraser"></i>Delete</a>
-					</div>
-				</div>	
+			if($data != false) {
+				foreach($data as $row) {
+					$id = $row["id"];
+	
+					$image = $row['image'];
+					$destination = $row['destination'];
+					$duration = $row['duration'];
+					$price = $row['price'];
+					echo
+					'
+					<div class="collection">
+						<img src="' . $image . '" alt="nft image" width="100%" height ="300px">
+						<h3>destination: ' . $destination . '</h3>
+						<p>price: ' . $price .'$</p>
+						<p>duration: ' . $duration .'h</p>
+						<div class="operation-td">
+							<a href="../view/update_form.php?id='. $id .'" name="update" class="update"><i class="bx bxs-edit"></i>Update</a>
+							<a href="../controller/crud.delete.php?id='. $id .'" name="delete" class="delete"><i class="bx bxs-eraser"></i>Delete</a>
+						</div>
+					</div>	
+					';
+				}
+			} else {
+	        echo '
+					<div class="collection">
+						<img src="../public/imgs/tours/Error.png" alt="nft image" width="100%" height ="300px">
+						<h3>no tours to show</h3>
+					</div>	
 				';
 			}
 		?>

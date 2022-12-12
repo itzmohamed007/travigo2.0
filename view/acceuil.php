@@ -86,17 +86,26 @@
 		<div class="destination-content">
 			<!-- modify from here -->
 			<?php
-			foreach($data as $row) {
-				$image = $row['image'];
-				$destination = $row['destination'];
-
+			if($data != false) {
+				foreach($data as $row) {
+					$image = $row['image'];
+					$destination = $row['destination'];
+	
+					echo '
+					<div class="col-content">
+						<img alt="image de machu picchu" src="' . $image . '">
+						<h5>' . $destination . '</h5>
+					</div>
+					';
+				}
+			} else {
 				echo '
-				<div class="col-content">
-					<img alt="image de machu picchu" src="' . $image . '">
-					<h5>' . $destination . '</h5>
-				</div>
-				';
-			}
+						<div class="collection">
+							<img src="../public/imgs/tours/Error.png" alt="nft image" width="100%" height ="300px">
+							<h3>no tours to show</h3>
+						</div>	
+					';
+				}
 			?>
 		</div>
 	</section>
